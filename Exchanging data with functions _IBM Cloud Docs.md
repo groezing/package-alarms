@@ -856,32 +856,28 @@ __curl client consuming the response status_code, the header fields and the resp
  ```
 
 
-
-[Info from FG: Docu instruction meta data. Re-use the invocation examples as Is from current docu version ]
+[Info from FG: Docu instruction meta data. Re-use the formatting and numbering of the invocation examples as Is from current docu version, but consider that some  curl commands are changed. ]
 ##  Code Engine function invocation examples
 
 Follow these steps to see the creation of a Code engine function with the Command line interface (CLI) and the usage of the external data interface.
 
  1.
 
-    Save the following code as |hello.js| locally 
-
+Save the following code as |hello.js| locally 
 ```javascript
-  function main(args) {
-    return { headers: { content_type: "application/json" },
-      statusCode: 200,
-    	body: {args: args}
-    };
-  }
+function main(args) {
+  return { headers: { content_type: "application/json" },
+    statusCode: 200,
+   	body: {args: args}
+  };
+}
 
 ```
  2.
 
-    After logon to IBM Cloud and selection of the IBM Code Engine functions service, Create a new function with the code:
+After logon to IBM Cloud and selection of the IBM Code Engine functions service, Create a new function with the code:
 
-    |ibmcloud ce fn create --name sample --runtime nodejs-18 --inline-code sample.js --cpu 0.5 --memory 2G
-
-    |
+  |ibmcloud ce fn create --name sample --runtime nodejs-18 --inline-code sample.js --cpu 0.5 --memory 2G    |
 
     Example output:
 
@@ -905,7 +901,7 @@ Follow these steps to see the creation of a Code engine function with the Comman
 
     Use the external data interface with a curl command to invoke the function:
 
-    |curl -v https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud/ | jq .
+    |curl -v https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud/ 
 
     |
 
@@ -929,7 +925,7 @@ Follow these steps to see the creation of a Code engine function with the Comman
 
     Invoke the function by using query parameters:
 
-    |curl -v "https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud/?planet1=Mars&planet2=Jupiter" | jq .
+    |curl -v "https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud/?planet1=Mars&planet2=Jupiter" 
 
     |
 
@@ -959,7 +955,7 @@ Follow these steps to see the creation of a Code engine function with the Comman
 
     Invoke the function by using form data:
 
-    |curl -H "Content-Type: application/x-www-form-urlencoded" -d 'planet1=Mars&planet2=Jupiter' https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud | jq .
+    |curl -H "Content-Type: application/x-www-form-urlencoded" -d 'planet1=Mars&planet2=Jupiter' https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud 
 
     |
 
@@ -988,7 +984,7 @@ Follow these steps to see the creation of a Code engine function with the Comman
 
     Invoke the function by using a JSON data object:
 
-    |curl -H "Content-Type: application/json" -d '{"planet1": "Mars", "planet2": "Jupiter"}' https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud | jq .
+    |curl -H "Content-Type: application/json" -d '{"planet1": "Mars", "planet2": "Jupiter"}' https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud 
 
     |
 
@@ -1021,7 +1017,7 @@ Follow these steps to see the creation of a Code engine function with the Comman
 
     Invoke the function by using JSON data and query parameters:
 
-    |curl -H "Content-Type: application/json" -d '{"planet1": "Mars", "planet2": "Jupiter"}' "https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud?planet2=Venus&planet3=Uranus" | jq .
+    |curl -H "Content-Type: application/json" -d '{"planet1": "Mars", "planet2": "Jupiter"}' "https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud?planet2=Venus&planet3=Uranus"
 
     |
 
@@ -1055,7 +1051,7 @@ Follow these steps to see the creation of a Code engine function with the Comman
 
     Invoke the function by using text content type:
 
-    |curl -H "Content-Type: text/plain" -d 'Here we have some text. The JSON special characters like \ or " are escaped.' https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud | jq .
+    |curl -H "Content-Type: text/plain" -d 'Here we have some text. The JSON special characters like \ or " are escaped.' https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud 
 
     |
 
@@ -1084,7 +1080,7 @@ Follow these steps to see the creation of a Code engine function with the Comman
 
     Invoke the function by using binary content type:
 
-    |curl -H "Content-Type: application/octet-stream" -d 'This string is treaded as binary data.' https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud | jq .
+    |curl -H "Content-Type: application/octet-stream" -d 'This string is treaded as binary data.' https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud 
 
     |
 
@@ -1108,68 +1104,5 @@ Follow these steps to see the creation of a Code engine function with the Comman
     |
 
 
-        Decoding binary body content from Base64
-
-You can decode a function's binary body content from Base64 as follows.
-
-Example of decoding functions in Node.js:
-
-|function main(args) {
-    binaryRequestBody = new Buffer(args.__ce_body, 'base64').toString('utf-8')
-
-	// The buffer binaryRequestBody now contains a copy of the request body.
-	....
-
-}
-
 |
-
-Example of decoding functions in Python:
-
-|import base64
-
-def main(args):
-    try:
-        binaryRequestBody = base64.b64decode(args['__ce_body'])
-    except:
-        return {
-            "body": "Error decoding body from Base64.",
-            "statusCode": 400
-        }
-
-	# The byte array binaryRequestBody now contains a copy of the request body.
-	...
-
-|
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
