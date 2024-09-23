@@ -429,16 +429,31 @@ The function's program logic might need to unescape them to recreate the origina
 | top-level property | NO                |   |
 	
 	  
-*Example Accessing text/plain input data* 
+Python example Accessing text/plain input data* 
 ```javascript     
-  import os
-  def main(args):
-    body_escaped = args.__ce_body;
-		 
-    return {
-      "statusCode": 200, 
-    }
+import os
+def main(args):
+  body = args['__ce_body']  # get request body, is text encoded (escaped)
+  
+  return {
+    "headers": { "Content-Type": "text/plain" },
+    "statusCode": 200,
+    "body": body, 
+  }
 ```     
+*Nodejs example Accessing text/plain input data* 
+```javascript    
+function main(args) {
+  var body  = args.__ce_body  // get complete request body (text encoded)
+
+  return {
+    statusCode: 200,
+    "body" : body,
+  };
+}
+
+module.exports.main = main;
+```  
   
 #### Args parameter from request data of Content-type "application/x-www-form-urlencoded" 
 	
