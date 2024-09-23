@@ -583,7 +583,7 @@ Dependent of the programming language the result object is either a Json object 
 ```
 
 
->Note : It is recommended to set body and statusCode always. The implicit setting of statusCode and body is only available for compatibility to IBM Cloud Functions deprecated service. 
+>Note : It is recommended to set body and statusCode always. The implicite setting of statusCode and body is only available for compatibility to deprecated service IBM Cloud Functions. 
 
 
 ### The headers element
