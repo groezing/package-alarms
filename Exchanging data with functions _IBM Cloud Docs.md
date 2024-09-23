@@ -235,7 +235,7 @@ The function receives the query parameter data as key/value in the __ce_query pa
 | top-level property | YES               | key/value  (url-decoded and text-encoded)  |
 
 	   
-*Example Accessing query parameters* 
+*Python example Accessing query parameters* 
 ```javascript     
 import os
 def main(args):
@@ -251,6 +251,24 @@ def main(args):
     "body": query,
   }
 ```
+
+  
+*Nodejs example Accessing query parameters* 
+```javascript     
+function main(args) {
+  var query_parm_1 = args.key     // get the value of one query parameter 
+  var query = args.__ce_query     // get all query parameters 
+   
+  return {
+    statusCode: 200,
+    "body" : query,
+  };
+}
+
+
+module.exports.main = main;
+```    
+
 	
 #### Args parameter from header data of function* invocation 
 
