@@ -270,7 +270,7 @@ module.exports.main = main;
 ```    
 
 	
-#### Args parameter from header data of function* invocation 
+#### Args parameter from header data of function invocation 
 
 The function receives the request header data as key/value in the __ce_headers section. The key value will be converted into canonical format, independent in which format the key is set on the external data interface (e.g. "mykey" or "MYKEY" is converted to "Mykey")
 
