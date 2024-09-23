@@ -122,7 +122,7 @@ Additionally the user's function code receives a set of automatically injected p
 import os
 def main(args):
   raw_input_data = args.__ce_body;
-	all_input=args; 		
+  all_input=args; 		
   env=dict(os.environ)
 
   return {
@@ -237,14 +237,19 @@ The function receives the query parameter data as key/value in the __ce_query pa
 	   
 *Example Accessing query parameters* 
 ```javascript     
-  import os
-  def main(args):
-    query_parm_A_url-encoded = args.__ce_query;
-		query_parm_A = args.<key>;
-		
-    return {
-      "statusCode": 200,
-    }
+import os
+def main(args):
+  query_parm_1 = args.get("key", "default_value") # get the value of one query parameter 
+  
+  try:
+    query = args["__ce_query"]  # get all query parms 
+  except:
+    query= "not part of request"
+ 
+  return {
+    "statusCode": 200,
+    "body": query,
+  }
 ```
 	
 #### Args parameter from header data of function* invocation 
