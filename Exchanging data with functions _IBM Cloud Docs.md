@@ -337,18 +337,38 @@ In addition, the JSON payload is made available to the function as-is (as byte a
 | __ce_query         | ""                | empty string |
 | top-level property | YES               | key/value for each top-level element (text-encoded)   |
 
-*Example Accessing application/json input data* 
 
+*Python example accessing application/json input data* 
 ```javascript   
   import os
-  def main(args):
-    body_encoded = args.__ce_body;
-		parm_<key> = args.<key>; 
-		 
-    return {
-      "statusCode": 200, 
-    } 
+def main(args):
+  try:
+    body_encoded = args["__ce_body"]  # get complete header (base64 encoded)
+    value_1 = args["key_1"]           # get value of the Header parm with "key_1" 
+  except:
+    value_1 = "not part of request"
+ 
+  return {
+    "statusCode": 200,
+    "body": value_1,
+  }
 ```   
+
+
+*Nodejs example accessing application/json input data* 
+```javascript   
+function main(args) {
+  var body  = args.__ce_body  // get complete request body (base64 encoded)
+  var value_1 = args.key_1    // get value of one single key 
+  
+  return {
+    statusCode: 200,
+    "body" : value_1,
+  };
+}
+
+module.exports.main = main;
+``` 
 
 #### Args parameter from request data of Content-type "application/octet-stream" 
 
