@@ -185,7 +185,7 @@ The args parameter is a language specific data structure (JSON object for Node.j
 |--------------------|-------------|
 | \_\_ce_....        | ce_functions input argument   | 
 | \_\_ce_headers     | ce_header is a copy of the HTTP request header   |
-| <any> (optional)   | top-level properties available if the HTTP request input data are provided in structured format (only if Content-Type 'application/json' is used)  |
+| \<any\> (optional)   | top-level properties available if the HTTP request input data are provided in structured format (only if Content-Type 'application/json' is used)  |
 	
 ```javascript
   {
