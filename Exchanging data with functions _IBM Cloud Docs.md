@@ -665,15 +665,15 @@ The user function code must provide the value of the body element as a valid dat
   import os
   def main(args):
     # python dictionary 
-	  result_body = { "key_1" : "myfolder\myFile" }
-		
+    result_body = { "key_1" : "myfolder\myFile" }
+	
     return {
       "headers": {
         "Content-Type": "application/json",
       },
       "statusCode": 200,
       "body": result_body, 
-		}
+    }
 ```
    
 *Example NodeJs application/json response* 
