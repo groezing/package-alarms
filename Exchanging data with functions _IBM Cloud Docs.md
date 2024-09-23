@@ -298,6 +298,25 @@ The function receives the request header data as key/value in the __ce_headers s
       "body": header,
     }
 ```
+*Nodejs example accessing header data* 
+   
+```javascript   
+function main(args) {
+  // var header_parm_1 = args.__ce_headers.Key_1  //get the value of one header parameter
+  var header = args.__ce_headers  // get all header parameters
+  
+  return {
+    statusCode: 200,
+    "body" : header,
+  };
+}
+
+module.exports.main = main;
+```
+
+
+
+
 
 #### Args parameter from request data of Content-type "application/json" 
 	
