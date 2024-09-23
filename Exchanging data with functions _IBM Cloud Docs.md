@@ -281,15 +281,21 @@ The function receives the request header data as key/value in the __ce_headers s
 | __ce_query         | ""                | empty string |
 | top-level property | NO                |   |
 
-*Example Accessing header data* 
+*Python example Accessing header data* 
    
-```javascript   
+```javascript
   import os
   def main(args):
-    header_parm_A = args.__ce_headers.<key>
-	
+
+    try:
+      header = args["__ce_headers"]  # get complete header 
+      # value_1 = args["__ce_headers"]["Key_1"]  # get value of the Header parm with "Key_1" 
+    except:
+      header = "not part of request"
+ 
     return {
-      "statusCode": 200, 
+      "statusCode": 200,
+      "body": header,
     }
 ```
 
