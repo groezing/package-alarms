@@ -465,18 +465,36 @@ The function receives the complete body data in text-encoded format in the __ce_
 | __ce_headers       | YES               | content-type is set |
 | __ce_query         | ""                | empty string |
 | top-level property | NO                |   |
-	  
+
+
+*Python example accessing application/x-www-form-urlencoded input data* 
+```javascript     
+import os
+def main(args):
+  body = args['__ce_body']  # get request body, is url-encoded (%)
+  
+  return {
+    "headers": { "Content-Type": "text/plain" },
+    "statusCode": 200,
+    "body": body, 
+  }
+```     
+*Nodejs example accessing application/x-www-form-urlencoded input data* 
+```javascript    
+function main(args) {
+  var body  = args.__ce_body  //get request body, is url-encoded (%)
+
+  return {
+    statusCode: 200,
+    "body" : body,
+  };
+}
+
+module.exports.main = main;
+```  
+
+   
 	   
-*Example Accessing application/x-www-form-urlencoded input data* 
-```javascript  
-  import os
-  def main(args):
-    body_escaped = args.__ce_body;
-		
-    return {
-      "statusCode": 200, 
-    }
-``` 
   
 #### Args parameter from request data of Content-type "application/x-www-form-urlencoded" and query params 
 	
