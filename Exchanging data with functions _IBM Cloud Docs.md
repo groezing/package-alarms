@@ -662,36 +662,36 @@ The user function code must provide the value of the body element as a valid dat
 
 *Example python application/json response* 
 ```javascript     
-  import os
-  def main(args):
-    # python dictionary 
-    result_body = { "key_1" : "myfolder\myFile" }
+import os
+def main(args):
+  # python dictionary 
+  result_body = { "key_1" : "myfolder\myFile" }
 	
-    return {
-      "headers": {
-        "Content-Type": "application/json",
-      },
-      "statusCode": 200,
-      "body": result_body, 
-    }
+  return {
+    "headers": {
+      "Content-Type": "application/json",
+    },
+    "statusCode": 200,
+    "body": result_body, 
+  }
 ```
    
 *Example NodeJs application/json response* 
 ```javascript     
-  function main(args) {
-    // JSON data structure  
-    // Note: Backslash must be text encoded 
-	  result_body =  { "key1" : "myfolder\\myFile"}
+function main(args) {
+  // JSON data structure  
+  // Note: Backslash must be text encoded 
+  result_body =  { "key1" : "myfolder\\myFile"}
 	  
-	  return {
-		  statusCode: 200,
-		  headers: { 
-		    'Content-Type': "application/json", 
-		  },
-		  "body" : result_body ,
-	  };
-	} 
-  module.exports.main = main;
+  return {
+    statusCode: 200,
+    headers: { 
+      'Content-Type': "application/json", 
+    },
+   "body" : result_body ,
+  };
+} 
+module.exports.main = main;
 ```
 
 #### body value of Content-type "application/octet-stream" 
