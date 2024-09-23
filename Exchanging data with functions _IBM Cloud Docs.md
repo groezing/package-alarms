@@ -220,7 +220,7 @@ The following parameters can be found in a Code Engine function's input argument
 | __ce_query         | String            | The query parameters from the request as an unparsed string. The __ce_query parameter is a single string that contains the query parameters that are parsed from the URL, without the leading question mark (?), and separated by an ampersand (&).  |
 
 
-The internal __ce_* parameters cannot be overwritten with request data provided int the HTTP request. HTTP calls trying to overwrite will fail with status 400 (Bad Request).
+The internal \_\_ce_* parameters cannot be overwritten with request data provided int the HTTP request. HTTP calls trying to overwrite will fail with status 400 (Bad Request).
 
 	
 #### Args parameter from query paramters of function invocation 
