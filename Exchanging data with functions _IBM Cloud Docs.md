@@ -82,6 +82,11 @@ curl -v "https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud/?planet1=Ma
 
 ```javascript
 curl -v -H "Content-Type: application/x-www-form-urlencoded" -d 'location=planet%20earth' https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud
+
+curl -v -H "Content-Type: application/json" -d "{'planet1': 'Mars', 'planet2': 'Jupiter'}" https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud
+
+WINDOWS:
+curl -v  -H "Content-Type: application/json" -d "{\"planet1\":\"Mars\",\"planet2\":\"Jupiter\"}"  https://sample.1kweru2e873.eu-gb.codeengine.appdomain.cloud
 ```
 
 >Tip: If Content-Type is missing for a request, then Code Engine handles the data payload as described for application/json.
