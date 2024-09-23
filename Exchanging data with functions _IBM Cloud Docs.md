@@ -596,7 +596,7 @@ Depending on the value of the Content-Type the body field in the result structur
 | Content type       | value assign to body element | Example                     |
 |--------------------|------------------------------|-----------------------------|
 | application/json   | JSON object                  | body : { key_1: val1 }      |
-| Not set (defaul)   | string                       | body :  "some text"         |
+| Not set (default)  | string                       | body :  "some text"         |
 | text/*             | string                       | body :  "some text"         |
 | audio/*, example/*, font/', image/*, video/*, and all remaining types | base64 encoded | body: "SGVsbG8gV29ybGQhCg==" |
   
