@@ -206,7 +206,7 @@ The args parameter is a language specific data structure (JSON object for Node.j
   }
 ```
 
-#### Args parameter set by Code Engine function's service (__ce_*)  
+#### Args parameter set for internal input arguments (__ce_*)
 	
 The IBM Code Engine functions service injects reserved input arguments to the args input data.
 The following parameters can be found in a Code Engine function's input arguments:
