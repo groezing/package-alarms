@@ -612,23 +612,21 @@ Additionally the user function code may use key/value pairs in the HTTP response
 **Values must :** 
   * must be text encoded (see text_encoding chapter) 
   * must be of data type string or array of string
-	
-*Example returning response data as Header key/value* 
+	*Example returning response data as Header key/value* 
 ```javascript      
 import os
-  def main(args):
-        
+def main(args):
   return {
     "headers": {
       "Content-Type": "text/plain",
-	  	"key_1" : "sample_value",
+  	  "key_1" : "sample_value",
     },
     "statusCode": 200,
     "body": "" , 
-	}
+  }
 
 ```     
-	
+
  
  ### The statusCode element
   
@@ -642,12 +640,11 @@ import os
 *Example returning response status code* 
 ```javascript     
 import os
-  def main(args):
-        
+def main(args):
   return {
     "statusCode": 200,
     "body": "" , 
-	}
+  }
 
 ```     
  
