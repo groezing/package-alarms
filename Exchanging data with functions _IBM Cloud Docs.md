@@ -518,22 +518,41 @@ While function call parameters are derived from the incoming HTTP request, a Cod
 
 For more information about these environment variables, see <link> Automatically injected environment variables.
 
-*Example Accessing the environment variables* 
+
+*Python Example Accessing the environment variables* 
 
 ```javascript     
-	import os
+import os
 
-	def main(args):
-    curEnv=dict(os.environ)
-		return {
-			"headers": { "Content-Type": "application/json" },
-			"statusCode": 200,
-			"body": {
-		   	"env": curEnv,
-			}
-		}
+def main(args):
+  curEnv=dict(os.environ)
+  return {
+    "headers": { "Content-Type": "application/json" },
+    "statusCode": 200,
+    "body": {
+      "env": curEnv,
+    }
+  }
 ```    
 
+
+*Nodejs Example Accessing the environment variables* 
+
+```javascript     
+function main(args) {
+  var curEnv = process.env; //read the function's env vars 
+  
+  return {
+    "headers": { "Content-Type": "application/json" },
+    "statusCode": 200,
+    "body": {
+      "env": curEnv,
+    }
+  };
+}
+
+module.exports.main = main;
+```    
 
 ## Internal response data interface 
 
