@@ -340,7 +340,7 @@ In addition, the JSON payload is made available to the function as-is (as byte a
 
 *Python example accessing application/json input data* 
 ```javascript   
-  import os
+import os
 def main(args):
   try:
     body_encoded = args["__ce_body"]  # get complete header (base64 encoded)
@@ -384,16 +384,21 @@ The function receives the binary data in Base64-encoded format in the `__ce_body
 *Example Accessing application/octet-stream input data* 
   
 ```javascript     
-  import os
-	import base64
+import os
+import base64
 
-  def main(args):
-    body_encoded = args.__ce_body;
-		body = binaryRequestBody = base64.b64decode(args['__ce_body'])
+def main(args):
+  try:
+    body_encoded = args["__ce_body"]  # get complete header (base64 encoded)
+  except:
+    value_1 = "not part of request"
+
+  body = binaryRequestBody = base64.b64decode(args['__ce_body'])
 		 
-    return {
-      "statusCode": 200, 
-    }  
+  return {
+    "statusCode": 200,
+    "body" : "body" 
+  }  
 ```
  
 #### Args parameter from request data of Content-type  "text/plain" 
