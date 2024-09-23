@@ -381,26 +381,40 @@ The function receives the binary data in Base64-encoded format in the `__ce_body
 | __ce_query         | ""                | empty string |
 | top-level property | NO                |   |
 	
-*Example Accessing application/octet-stream input data* 
-  
+*Python example Accessing application/octet-stream input data*   
 ```javascript     
 import os
 import base64
 
 def main(args):
   try:
-    body_encoded = args["__ce_body"]  # get complete header (base64 encoded)
+    body = base64.b64decode(args['__ce_body']).decode("utf-8")   # read binary data into the body variable
   except:
-    value_1 = "not part of request"
+    body = "not binary data found"
 
-  body = binaryRequestBody = base64.b64decode(args['__ce_body'])
-		 
   return {
+    "headers": { "Content-Type": "text/plain" },  # text/plain, if ensured binary data do not conain backslash and double quotes
     "statusCode": 200,
-    "body" : "body" 
-  }  
-```
- 
+    "body": body, 
+  }
+``` 
+
+*Nodejs example accessing application/octet-stream input data* 
+```javascript     
+function main(args) {
+  var base64EncodedBody = args.__ce_body   // get complete request body (base64 encoded)
+  var body = Buffer.from(args.__ce_body, 'base64').toString('utf-8') //  read binary data into the body variable
+  
+  return {
+    statusCode: 200,
+    "body" : binaryRequestBody,
+  };
+}
+
+module.exports.main = main;
+```     
+
+
 #### Args parameter from request data of Content-type  "text/plain" 
 	
 The function receives the text type data in Base64-encoded format in the __ce_body parameter.
